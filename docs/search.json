@@ -1,252 +1,252 @@
 [
   {
-    "objectID": "SDS_Day_2_slides.html#section",
-    "href": "SDS_Day_2_slides.html#section",
+    "objectID": "Day2.html#section",
+    "href": "Day2.html#section",
     "title": "Spatial Data Science II",
     "section": "",
     "text": "Assigned Reading: Chapter 3 of Spatial Data Science"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#theoretical-relations-i",
-    "href": "SDS_Day_2_slides.html#theoretical-relations-i",
+    "objectID": "Day2.html#theoretical-relations-i",
+    "href": "Day2.html#theoretical-relations-i",
     "title": "Spatial Data Science II",
     "section": "Theoretical Relations I",
     "text": "Theoretical Relations I\n\n\nDimensionally Extended 9-Intersection Model (DE-9IM)\nDeveloped to query spatial databases\nServes as the standard for describing relations\n\n\n\n\n\n\n\n\nDE-9IM (Krauss)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#theoretical-relations-ii",
-    "href": "SDS_Day_2_slides.html#theoretical-relations-ii",
+    "objectID": "Day2.html#theoretical-relations-ii",
+    "href": "Day2.html#theoretical-relations-ii",
     "title": "Spatial Data Science II",
     "section": "Theoretical Relations II",
     "text": "Theoretical Relations II\n\n\nUpper Middle Panel, dimensions containing the intersection of the Interior of ‘A’ to the Boundary of ‘B’ is equal to a line.\n\\[\ndim[I(a)∩B(b)] = 1\n\\]\nwhere ‘I’ is the ‘Interior’ (of ‘A’) & ‘B’ is the ‘Boundary’ (of ‘B’)\n\\[\n\\text{∩ is the 'Intersection'}\n\\]\n‘1’ denotes that the product of the intersection is a line - it’s the maximal dimension when intersecting to a boundary! \n\n\n\n\n\n\n\nDE-9IM (Krauss)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#applications",
-    "href": "SDS_Day_2_slides.html#applications",
+    "objectID": "Day2.html#applications",
+    "href": "Day2.html#applications",
     "title": "Spatial Data Science II",
     "section": "Applications",
     "text": "Applications\n\n A schema for describing spatial relationships\n\n\n\\(dim[I(a)∩I(b)] = 2\\) Which areas are in both polygons\n\\(dim[I(a)∩B(b)] = 1\\) Which areas are in ‘a’, and the boundary of ‘b’\n\\(dim[I(a)∩E(b)] = 2\\) Which areas are in ‘a’, but not in ‘b’\n\\(dim[B(a)∩I(b)] = 1\\) Which areas are at the boundary of ‘a’, and in ‘b’\n\\(dim[B(a)∩B(b)] = 0\\) Which areas are at the boundaries of ‘a’ and ‘b’\n\\(dim[B(a)∩E(b)] = 1\\) Which areas are at the boundary of ‘a’, and outside ‘b’\n\\(dim[E(a)∩I(b)] = 2\\) Which areas are in ‘b’ but not in ‘a’\n\\(dim[E(a)∩B(b)] = 1\\) Which areas are at the boundary of ‘b’ and outside ‘a’\n\\(dim[E(a)∩E(b)] = 2\\) Which areas are outside both ‘a’ and ‘b’\n\n\n\n\n\n\n\n\nDE-9IM (Krauss)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#theoretical-properties",
-    "href": "SDS_Day_2_slides.html#theoretical-properties",
+    "objectID": "Day2.html#theoretical-properties",
+    "href": "Day2.html#theoretical-properties",
     "title": "Spatial Data Science II",
     "section": "Theoretical Properties",
     "text": "Theoretical Properties\n\n\n\n\n\n\nSpatial Predicates after Egenhofer and Herring (1990)\n\n\n\n\n\n\n\n Disjoint Neither ‘A’ nor ‘B’ touch at any position\nTouches The boundaries of ‘A’ and ‘B’ touch\nOverlaps Portions of the interior of feature ‘A’ overlap the interior of ‘B’\n\n\n Covers ‘A’ is encapsulated by ‘B’ several sides, but a boundary of ‘A’ shares a border with ‘B’\nContains All borders of one feature are contained by another\nEquals ‘A’ and ‘B’ have identical extents."
   },
   {
-    "objectID": "SDS_Day_2_slides.html#implementations",
-    "href": "SDS_Day_2_slides.html#implementations",
+    "objectID": "Day2.html#implementations",
+    "href": "Day2.html#implementations",
     "title": "Spatial Data Science II",
     "section": "Implementations",
     "text": "Implementations\npostGIS implements the following three tests in addition to those on the previous slide:\n\nIntersects (includes: ‘st_touches’, ‘st_overlaps’, ‘st_covers’, ‘st_contain’, ‘st_equals’)\n\nWithin (includes: ‘st_contains’)\n\nCoveredBy (includes: ‘st_equals’)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#applications-1",
-    "href": "SDS_Day_2_slides.html#applications-1",
+    "objectID": "Day2.html#applications-1",
+    "href": "Day2.html#applications-1",
     "title": "Spatial Data Science II",
     "section": "Applications",
     "text": "Applications\n\nRelationships can be tested using the sf package\n\n\n\nsf implementation\n\n\n\nst_disjoint(A, B_disjoint, sparse = F): TRUE\n\n\nst_touches(A, B_touches, sparse = F): TRUE\n\n\nst_equals(A, B_overlap, sparse = F): TRUE\n\n\nst_covers(A, B_covers, sparse = F): TRUE\n\n\nst_contains(A, B_contains, sparse = F): TRUE\n\n\nst_equals(A, B_equals, sparse = F): TRUE\n\n\nst_equals(A, B_disjoint, sparse = F): FALSE\n\n\n\n\n\npostGIS implementation\n\n\n\nst_intersects(A, B_touches, sparse = F): TRUE\n\n\nst_intersects(A, B_overlap, sparse = F): TRUE\n\n\nst_intersects(A, B_covers, sparse = F): TRUE\n\n\nst_intersects(A, B_contains, sparse = F): TRUE\n\n\nst_intersects(A, B_equals, sparse = F): TRUE\n\n\nst_within(A, B_contains, sparse = F): FALSE\n\n\nst_within(B_contains, A, sparse = F): TRUE\n\n\nst_coveredby(A, B_equals, sparse = F): TRUE"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#spatial-join",
-    "href": "SDS_Day_2_slides.html#spatial-join",
+    "objectID": "Day2.html#spatial-join",
+    "href": "Day2.html#spatial-join",
     "title": "Spatial Data Science II",
     "section": "Spatial Join",
     "text": "Spatial Join\nCombine objects based on their spatial relations.\n\nnghbrhd_parks &lt;- st_join(\n  chi_neighb, chi_parks, \n  join = st_intersects, \n  left = TRUE) %&gt;% \n  count(pri_neigh)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#import-a-vector-file",
-    "href": "SDS_Day_2_slides.html#import-a-vector-file",
+    "objectID": "Day2.html#import-a-vector-file",
+    "href": "Day2.html#import-a-vector-file",
     "title": "Spatial Data Science II",
     "section": "Import a Vector file",
     "text": "Import a Vector file\nMany formats of vector files may be imported to R. Here we import a shapefile, but the process is the same for geopackages etc.\n\nfp &lt;- file.path('.', 'spatial_lecture_data', 'Chicago_Neighborhoods')\nfiles &lt;- file.path(fp, list.files(fp, \".shp\"))\n\nchi_neighb &lt;- read_sf(files)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#convert-to-and-from-sp-objects",
-    "href": "SDS_Day_2_slides.html#convert-to-and-from-sp-objects",
+    "objectID": "Day2.html#convert-to-and-from-sp-objects",
+    "href": "Day2.html#convert-to-and-from-sp-objects",
     "title": "Spatial Data Science II",
     "section": "Convert to and from sp objects",
     "text": "Convert to and from sp objects\nOften needed to be done on the fly\nconvert sp -&gt; sf\n\nus_states.sf &lt;- st_as_sf(us_states.sp)\nclass(us_states.sf)\n\n[1] \"sf\"         \"data.frame\"\n\n\nconvert sf -&gt; sf\n\nus_states.sp &lt;- as(us_states.sf, 'Spatial')\nclass(us_states.sp)\n\n[1] \"SpatialPolygonsDataFrame\"\nattr(,\"package\")\n[1] \"sp\""
   },
   {
-    "objectID": "SDS_Day_2_slides.html#make-tabular-point-data-spatial",
-    "href": "SDS_Day_2_slides.html#make-tabular-point-data-spatial",
+    "objectID": "Day2.html#make-tabular-point-data-spatial",
+    "href": "Day2.html#make-tabular-point-data-spatial",
     "title": "Spatial Data Science II",
     "section": "Make tabular point data spatial",
     "text": "Make tabular point data spatial\ncoords columns holding coordinates\ncrs The CRS the data are currently\nremove = F Should the original coordinate holding columns be removed?\n\nmuseums.sf &lt;- st_as_sf(\n  museums, \n  coords = c(x = 'longitude', y = 'latitude'), \n  crs = 4326, \n  remove = F\n  )\n\n\n\n\n\n\n\nattribute\nlatitude\nlongitude\ngeometry\n\n\n\n\nField Museum\n41.86666\n-87.61643\nPOINT (-87.61643 41.86666)\n\n\nScience and Industry\n41.79006\n-87.58227\nPOINT (-87.58227 41.79006)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#st_transform",
-    "href": "SDS_Day_2_slides.html#st_transform",
+    "objectID": "Day2.html#st_transform",
+    "href": "Day2.html#st_transform",
     "title": "Spatial Data Science II",
     "section": "st_transform",
     "text": "st_transform\n\n\nCheck CRS\n\n\nst_crs(museums.sf)\n\nCoordinate Reference System:\n  User input: EPSG:4326 \n  wkt:\nGEOGCRS[\"WGS 84\",\n    ENSEMBLE[\"World Geodetic System 1984 ensemble\",\n        MEMBER[\"World Geodetic System 1984 (Transit)\"],\n        MEMBER[\"World Geodetic System 1984 (G730)\"],\n        MEMBER[\"World Geodetic System 1984 (G873)\"],\n        MEMBER[\"World Geodetic System 1984 (G1150)\"],\n        MEMBER[\"World Geodetic System 1984 (G1674)\"],\n        MEMBER[\"World Geodetic System 1984 (G1762)\"],\n        MEMBER[\"World Geodetic System 1984 (G2139)\"],\n        ELLIPSOID[\"WGS 84\",6378137,298.257223563,\n            LENGTHUNIT[\"metre\",1]],\n        ENSEMBLEACCURACY[2.0]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"geodetic latitude (Lat)\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"geodetic longitude (Lon)\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    USAGE[\n        SCOPE[\"Horizontal component of 3D system.\"],\n        AREA[\"World.\"],\n        BBOX[-90,-180,90,180]],\n    ID[\"EPSG\",4326]]\n\n\n\nproject coordinates from one CRS to another. EPSG codes are numeric and simple to use!\n\nmuseums.conus_albers &lt;- st_transform(museums.sf, crs = 5070)\n\nverify the projection worked with st_crs\n\nst_crs(museums.conus_albers)[['input']]\n\n[1] \"EPSG:5070\""
   },
   {
-    "objectID": "SDS_Day_2_slides.html#remove-simple-feature-list-column",
-    "href": "SDS_Day_2_slides.html#remove-simple-feature-list-column",
+    "objectID": "Day2.html#remove-simple-feature-list-column",
+    "href": "Day2.html#remove-simple-feature-list-column",
     "title": "Spatial Data Science II",
     "section": "Remove simple feature list column",
     "text": "Remove simple feature list column\nOftentimes required to feed a data set into other packages, the list columns can confuse them.\n\n\nhead(museums.sf)\n\nSimple feature collection with 2 features and 3 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -87.61643 ymin: 41.79006 xmax: -87.58227 ymax: 41.86666\nGeodetic CRS:  WGS 84\n# A tibble: 2 × 4\n  attribute            latitude longitude             geometry\n  &lt;chr&gt;                &lt;chr&gt;    &lt;chr&gt;              &lt;POINT [°]&gt;\n1 Field Museum         41.86666 -87.61643 (-87.61643 41.86666)\n2 Science and Industry 41.79006 -87.58227 (-87.58227 41.79006)\n\n\n\n\nmuseums &lt;- st_drop_geometry(museums.sf) # method one, pipe-able \nst_geometry(museums.sf) &lt;- NULL # method two, drop in place. \nhead(museums)\n\n# A tibble: 2 × 3\n  attribute            latitude longitude\n  &lt;chr&gt;                &lt;chr&gt;    &lt;chr&gt;    \n1 Field Museum         41.86666 -87.61643\n2 Science and Industry 41.79006 -87.58227"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#make-geometry-a-valid-simple-feature",
-    "href": "SDS_Day_2_slides.html#make-geometry-a-valid-simple-feature",
+    "objectID": "Day2.html#make-geometry-a-valid-simple-feature",
+    "href": "Day2.html#make-geometry-a-valid-simple-feature",
     "title": "Spatial Data Science II",
     "section": "Make geometry a valid Simple Feature",
     "text": "Make geometry a valid Simple Feature\nSome spatial data may not be in a simple format sf package can generally fix this\n\nst_is_valid(p1)\nst_is_valid(p1, reason = TRUE)\n\n\n\nst_is_valid(p1): FALSE\n\n\nst_is_valid(p1, reason = TRUE): Self-intersection[5 5]\n\n\nmaking the geometry simple with st_make_valid()\n\np2 &lt;- st_make_valid(p1)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#make-geometry-a-valid-simple-feature-1",
-    "href": "SDS_Day_2_slides.html#make-geometry-a-valid-simple-feature-1",
+    "objectID": "Day2.html#make-geometry-a-valid-simple-feature-1",
+    "href": "Day2.html#make-geometry-a-valid-simple-feature-1",
     "title": "Spatial Data Science II",
     "section": "Make geometry a valid Simple Feature",
     "text": "Make geometry a valid Simple Feature\nPolygon became a multipolygon with two polygons\nSplit by removal of self-intersection at position X5, Y5.\n\n\n\nclass(p1)[1]\n\n[1] \"sfc_POLYGON\"\n\n\n\n\nclass(p2)[1]\n\n[1] \"sfc_MULTIPOLYGON\""
   },
   {
-    "objectID": "SDS_Day_2_slides.html#summarize-geometries-with-group_by",
-    "href": "SDS_Day_2_slides.html#summarize-geometries-with-group_by",
+    "objectID": "Day2.html#summarize-geometries-with-group_by",
+    "href": "Day2.html#summarize-geometries-with-group_by",
     "title": "Spatial Data Science II",
     "section": "summarize geometries with group_by",
     "text": "summarize geometries with group_by\ndplyr can be used to union geometries by group\n\nregions &lt;- us_states %&gt;%\n  group_by(REGION) %&gt;% \n  summarize(geometry = st_union(geometry))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ninput data\n\n\n\n\n\n\n\nNAME\nREGION\ngeometry\n\n\n\n\nAlabama\nSouth\nMULTIPOLYGON (((-88.20006 3…\n\n\nArizona\nWest\nMULTIPOLYGON (((-114.7196 3…\n\n\nColorado\nWest\nMULTIPOLYGON (((-109.0501 4…\n\n\nConnecticut\nNorteast\nMULTIPOLYGON (((-73.48731 4…\n\n\nFlorida\nSouth\nMULTIPOLYGON (((-81.81169 2…\n\n\nGeorgia\nSouth\nMULTIPOLYGON (((-85.60516 3…\n\n\n\n\n\n\n\n\n\nresults\n\n\n\n\n\n\n\nREGION\ngeometry\n\n\n\n\nNorteast\nMULTIPOLYGON (((-70.8173 42…\n\n\nMidwest\nMULTIPOLYGON (((-85.48703 4…\n\n\nSouth\nMULTIPOLYGON (((-81.44412 3…\n\n\nWest\nMULTIPOLYGON (((-118.4887 3…"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#area-calculations-conversion",
-    "href": "SDS_Day_2_slides.html#area-calculations-conversion",
+    "objectID": "Day2.html#area-calculations-conversion",
+    "href": "Day2.html#area-calculations-conversion",
     "title": "Spatial Data Science II",
     "section": "Area Calculations conversion",
     "text": "Area Calculations conversion\nValues by converted by looking up constants, or by using the units package.\n\nunits(equal_areas_proj) &lt;- units::make_units(ha)\nhead(equal_areas_proj)\n\nUnits: [ha]\n[1]  8.197562 15.334617 20.086333 25.781909 31.268312 32.418268\n\n\n\n\n\n\n\nSize of the Largest and Smallest Neighborhoods in Chicago\n\n\n\n\n\n\n\n\n\nSmallest\n\n\nLargest\n\n\n\nNeighborhood\nArea (ha)\nNeighborhood\nArea (ha)\n\n\n\n\nMagnificent Mile\n81975.62\nO'Hare\n34545331\n\n\nGreektown\n153346.17\nSouth Deering\n28222393\n\n\nPrinters Row\n200863.33\nEnglewood\n16127634\n\n\nMillenium Park\n257819.09\nAustin\n15796966\n\n\nBoystown\n312683.12\nHegewisch\n13559955"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#st_length-of-linestring",
-    "href": "SDS_Day_2_slides.html#st_length-of-linestring",
+    "objectID": "Day2.html#st_length-of-linestring",
+    "href": "Day2.html#st_length-of-linestring",
     "title": "Spatial Data Science II",
     "section": "st_length of linestring",
     "text": "st_length of linestring\n\nCalculate the length of a linestring\n\n\n\n\nst_length(NU_campuses)\n\n18578.52 [m]"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#boundary-length-calculation",
-    "href": "SDS_Day_2_slides.html#boundary-length-calculation",
+    "objectID": "Day2.html#boundary-length-calculation",
+    "href": "Day2.html#boundary-length-calculation",
     "title": "Spatial Data Science II",
     "section": "Boundary length calculation",
     "text": "Boundary length calculation\n\nextract the boundary of the polygon as a linestring\n\ncalculate length using st_length\n\n\nrogers_park &lt;- filter(chi_neighb, pri_neigh == 'Rogers Park')\n\nrogers_park &lt;- st_cast(rogers_park, to = 'MULTILINESTRING')\nrogers_park &lt;- st_cast(rogers_park, to = 'LINESTRING')\n\nst_length(rogers_park)\n\n\n\n\n\n10370.89 [m]"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#point-on-surface",
-    "href": "SDS_Day_2_slides.html#point-on-surface",
+    "objectID": "Day2.html#point-on-surface",
+    "href": "Day2.html#point-on-surface",
     "title": "Spatial Data Science II",
     "section": "Point on Surface",
     "text": "Point on Surface\nIf the centroid would fall outside of a geometry, constrain it with st_point_on_surface\n\nchi_pos &lt;- st_point_on_surface(chi_neighb)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#combine-features",
-    "href": "SDS_Day_2_slides.html#combine-features",
+    "objectID": "Day2.html#combine-features",
+    "href": "Day2.html#combine-features",
     "title": "Spatial Data Science II",
     "section": "Combine Features",
     "text": "Combine Features\n\nst_combine will form a multi* geometry\n\nRetain all geometries as a multipolygon collection\nLose the attributes of each feature\n\n\n\nchi_combine &lt;- st_combine(chi_neighb)\n\n\n\n\n\nhead(chi_neighb)\n\nSimple feature collection with 6 features and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -87.74141 ymin: 41.80189 xmax: -87.60641 ymax: 41.93272\nGeodetic CRS:  WGS84(DD)\n# A tibble: 6 × 5\n  pri_neigh          sec_neigh    shape_area shape_len                  geometry\n  &lt;chr&gt;              &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;        &lt;MULTIPOLYGON [°]&gt;\n1 Grand Boulevard    BRONZEVILLE   48492503.    28197. (((-87.60671 41.81681, -…\n2 Printers Row       PRINTERS ROW   2162138.     6864. (((-87.62761 41.87437, -…\n3 United Center      UNITED CENT…  32520513.    23101. (((-87.66707 41.88885, -…\n4 Sheffield & DePaul SHEFFIELD &…  10482592.    13227. (((-87.65833 41.92166, -…\n5 Humboldt Park      HUMBOLDT PA… 125010426.    46127. (((-87.7406 41.88782, -8…\n6 Garfield Park      GARFIELD PA…  89976070.    44461. (((-87.6954 41.88819, -8…\n\n\n\nhead(chi_combine)\n\nGeometry set for 1 feature \nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -87.94011 ymin: 41.64454 xmax: -87.52414 ymax: 42.02304\nGeodetic CRS:  WGS84(DD)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#union-features",
-    "href": "SDS_Day_2_slides.html#union-features",
+    "objectID": "Day2.html#union-features",
+    "href": "Day2.html#union-features",
     "title": "Spatial Data Science II",
     "section": "Union Features",
     "text": "Union Features\n\nst_union will form a multi* geometry\n\nRetain only outer boundary geometries of features\nLose the attributes of each feature\n\n\n\nchi_union &lt;- st_union(chi_neighb)\n\n\n\n\n\nhead(chi_neighb)\n\nSimple feature collection with 6 features and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -87.74141 ymin: 41.80189 xmax: -87.60641 ymax: 41.93272\nGeodetic CRS:  WGS84(DD)\n# A tibble: 6 × 5\n  pri_neigh          sec_neigh    shape_area shape_len                  geometry\n  &lt;chr&gt;              &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;        &lt;MULTIPOLYGON [°]&gt;\n1 Grand Boulevard    BRONZEVILLE   48492503.    28197. (((-87.60671 41.81681, -…\n2 Printers Row       PRINTERS ROW   2162138.     6864. (((-87.62761 41.87437, -…\n3 United Center      UNITED CENT…  32520513.    23101. (((-87.66707 41.88885, -…\n4 Sheffield & DePaul SHEFFIELD &…  10482592.    13227. (((-87.65833 41.92166, -…\n5 Humboldt Park      HUMBOLDT PA… 125010426.    46127. (((-87.7406 41.88782, -8…\n6 Garfield Park      GARFIELD PA…  89976070.    44461. (((-87.6954 41.88819, -8…\n\n\n\nhead(chi_union)\n\nGeometry set for 1 feature \nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -87.94011 ymin: 41.64454 xmax: -87.52414 ymax: 42.02304\nGeodetic CRS:  WGS84(DD)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#st_cast",
-    "href": "SDS_Day_2_slides.html#st_cast",
+    "objectID": "Day2.html#st_cast",
+    "href": "Day2.html#st_cast",
     "title": "Spatial Data Science II",
     "section": "st_cast",
-    "text": "st_cast\n\nCan be used to extract types of geometries from a multi(polygon, line, point)geometry, or geometry collection.\n\n\n\n\n\n\n\n\n\n\n\nDivide a Multipolygon into individual polygons.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOriginal data\n\n\nNeighborhood\ngeometry\n\n\n\n\nLogan Square\nMULTIPOLYGON (((-87.68732 4…\n\n\nRoseland\nMULTIPOLYGON (((-87.60449 4…\n\n\nNorth Lawndale\nMULTIPOLYGON (((-87.72024 4…\n\n\nWest Loop\nMULTIPOLYGON (((-87.64447 4…\n\n\nMorgan Park\nMULTIPOLYGON (((-87.64215 4…\n\n\nWashington Heights\nMULTIPOLYGON (((-87.63373 4…\n\n\n\n\n\n\nUnioned Data\n\n\ngeometry\n\n\n\n\nMULTIPOLYGON (((-87.58582 4…\n\n\n\n\n\n\nData Cast to Polygons\n\n\ngeometry\n\n\n\n\nPOLYGON ((-87.58582 41.7515…\n\n\nPOLYGON ((-87.6952 41.96127…\n\n\nPOLYGON ((-87.62855 41.7942…\n\n\nPOLYGON ((-87.64435 41.8599…\n\n\nPOLYGON ((-87.94001 41.9981…\n\n\nPOLYGON ((-87.9335 42.00553…"
+    "text": "st_cast\n\nCan be used to extract types of geometries from a multi(polygon, line, point)geometry, or geometry collection.\n\n\n\n\n\n\n\n\n\n\n\nDivide a Multipolygon into individual polygons.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOriginal data\n\n\nNeighborhood\ngeometry\n\n\n\n\nBurnside\nMULTIPOLYGON (((-87.58737 4…\n\n\nSheffield & DePaul\nMULTIPOLYGON (((-87.65833 4…\n\n\nNorth Center\nMULTIPOLYGON (((-87.67336 4…\n\n\nSauganash,Forest Glen\nMULTIPOLYGON (((-87.76919 4…\n\n\nSouth Shore\nMULTIPOLYGON (((-87.5921 41…\n\n\nGrand Boulevard\nMULTIPOLYGON (((-87.60671 4…\n\n\n\n\n\n\nUnioned Data\n\n\ngeometry\n\n\n\n\nMULTIPOLYGON (((-87.68485 4…\n\n\n\n\n\n\nData Cast to Polygons\n\n\ngeometry\n\n\n\n\nPOLYGON ((-87.68485 42.0194…\n\n\nPOLYGON ((-87.59219 41.7728…\n\n\nPOLYGON ((-87.6678 41.9143,…\n\n\nPOLYGON ((-87.76919 42.0048…\n\n\nPOLYGON ((-87.69668 41.7071…\n\n\nPOLYGON ((-87.83658 41.9864…"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#buffers",
-    "href": "SDS_Day_2_slides.html#buffers",
+    "objectID": "Day2.html#buffers",
+    "href": "Day2.html#buffers",
     "title": "Spatial Data Science II",
     "section": "Buffers",
     "text": "Buffers\nEnlarge a feature by a specified distance in X & Y dimensions\n\nchi_union &lt;- sf::st_transform(chi_union, 32616) # project into a planar system\n# with constant units i.e. meters. \nchi_buffer_3k &lt;- st_buffer(chi_union, dist = 3000)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#convex-hulls",
-    "href": "SDS_Day_2_slides.html#convex-hulls",
+    "objectID": "Day2.html#convex-hulls",
+    "href": "Day2.html#convex-hulls",
     "title": "Spatial Data Science II",
     "section": "Convex Hulls",
     "text": "Convex Hulls\n\nConvex Hull: Encapsulate a feature space\n\n\nchi_ch_by_neigh &lt;- st_convex_hull(chi_neighb)\nchi_ch_cit &lt;- st_convex_hull(chi_union)"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#measuring-distance-ii",
-    "href": "SDS_Day_2_slides.html#measuring-distance-ii",
+    "objectID": "Day2.html#measuring-distance-ii",
+    "href": "Day2.html#measuring-distance-ii",
     "title": "Spatial Data Science II",
     "section": "Measuring Distance II",
     "text": "Measuring Distance II\nst_distance will calculate distance between locations using great circle distance\n\nAM_FM &lt;- st_distance(AM, FM)\nAM_FM &lt;- as.numeric(units::set_units(AM_FM, 'kilometer')) \n\n\n\n\n\n\n\nDistance (km)\nJourney\n\n\n\n\n1144.3\nAmerican to Field\n\n\n334.7\nAmerican to Smithsonian\n\n\n955.4\nField to Smithonian"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#measuing-distances-iii",
-    "href": "SDS_Day_2_slides.html#measuing-distances-iii",
+    "objectID": "Day2.html#measuing-distances-iii",
+    "href": "Day2.html#measuing-distances-iii",
     "title": "Spatial Data Science II",
     "section": "Measuing Distances III",
     "text": "Measuing Distances III\nWe can measure distances between many objects and get a matrix of distances\n\nneighborhood_centroid_dist &lt;- st_distance(\n  st_centroid(chi_neighb) # st_distance requires points  \n  )\n\n\n\n\n\n\nThe five most Central Chicago Neighborhoods\n\n\nNeighborhood\nMean Distance (m)\n\n\n\n\nLittle Italy, UIC\n10291.97\n\n\nLower West Side\n10350.90\n\n\nWest Loop\n10426.27\n\n\nGreektown\n10455.72\n\n\nUnited Center\n10498.78"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#voronoi-polygons",
-    "href": "SDS_Day_2_slides.html#voronoi-polygons",
+    "objectID": "Day2.html#voronoi-polygons",
+    "href": "Day2.html#voronoi-polygons",
     "title": "Spatial Data Science II",
     "section": "Voronoi Polygons",
     "text": "Voronoi Polygons\nPartition space to the closest object\n\nvorons &lt;- st_voronoi(st_union(plants)) %&gt;%  # need a multipoint object\n  st_collection_extract() %&gt;% # st_voronoi returns a multipolygon, extract\n  st_as_sf(crs = 32610) # each of the polygons\n\n\n\n\nvorons &lt;- vorons %&gt;% \n  mutate( # ancillary information \n    pt = unlist(st_intersects(plants, ,)), # match the input points to polygons\n    area = as.numeric(st_area(.)), .before = 1 # calculate the area of each polygon\n  )"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#identifying-distance-based-neighbors",
-    "href": "SDS_Day_2_slides.html#identifying-distance-based-neighbors",
+    "objectID": "Day2.html#identifying-distance-based-neighbors",
+    "href": "Day2.html#identifying-distance-based-neighbors",
     "title": "Spatial Data Science II",
     "section": "Identifying Distance Based Neighbors",
     "text": "Identifying Distance Based Neighbors\n\nfind neighbors via distance thresholds using spdep\n\nneighbors can be used in spatial regression as weights\n\n\nneighborhood_object &lt;- dnearneigh(plants, d1 = 1, d2 = 200) \n\n\n\n\nsummary(neighborhood_object)\n\nNeighbour list object:\nNumber of regions: 79 \nNumber of nonzero links: 1780 \nPercentage nonzero weights: 28.52107 \nAverage number of links: 22.53165 \nLink number distribution:\n\n 4  5  6  7  8  9 15 17 18 20 21 22 23 24 25 26 27 28 29 30 32 33 34 \n 1  1  1  4  3  2  2  2  1  5  3  1  2  9 10  8  9  2  3  3  1  4  2 \n1 least connected region:\n79 with 4 links\n2 most connected regions:\n25 26 with 34 links"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#kernel-density-estimation-of-a-point-pattern",
-    "href": "SDS_Day_2_slides.html#kernel-density-estimation-of-a-point-pattern",
+    "objectID": "Day2.html#kernel-density-estimation-of-a-point-pattern",
+    "href": "Day2.html#kernel-density-estimation-of-a-point-pattern",
     "title": "Spatial Data Science II",
     "section": "Kernel Density Estimation of a Point Pattern",
     "text": "Kernel Density Estimation of a Point Pattern\n\nestimate the intensity, ~ the density of a process in space\nmore widely used for building models than simply estimating densities via projections"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#determine-whether-points-have-a-non-random-distribution",
-    "href": "SDS_Day_2_slides.html#determine-whether-points-have-a-non-random-distribution",
+    "objectID": "Day2.html#determine-whether-points-have-a-non-random-distribution",
+    "href": "Day2.html#determine-whether-points-have-a-non-random-distribution",
     "title": "Spatial Data Science II",
     "section": "Determine whether points have a non-random distribution",
     "text": "Determine whether points have a non-random distribution\n\nripleys_K &lt;- Kest(pp1, correction=\"all\")\n\n\n - Ripley’s K\n- Determine whether a point process has a non-random distribution\n- Can fit multiple distributions\n- models above the poisson curve have clustered distributions, below repelled\n- processes which can be modelled"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#cluster-a-point-pattern",
-    "href": "SDS_Day_2_slides.html#cluster-a-point-pattern",
+    "objectID": "Day2.html#cluster-a-point-pattern",
+    "href": "Day2.html#cluster-a-point-pattern",
     "title": "Spatial Data Science II",
     "section": "Cluster a Point Pattern",
     "text": "Cluster a Point Pattern\n\nDensity-Based Spatial Clustering of Applications with Noise (DBSCAN).\nAlgorithm for grouping objects in space\nDeveloped in the mid 90’s, still used and highly cited!\nRequires two terms\n\nminium points: the number of points required to form a cluster\neps: loosely related to distance for which neighbor searches can occur"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#dbscan",
-    "href": "SDS_Day_2_slides.html#dbscan",
+    "objectID": "Day2.html#dbscan",
+    "href": "Day2.html#dbscan",
     "title": "Spatial Data Science II",
     "section": "DBSCAN",
     "text": "DBSCAN\n\nMinPts: the number of points required to form a cluster\neps: ~ distance for which neighbor searches occur\n\n\nclustered &lt;- fpc::dbscan(st_coordinates(plants), eps = 70, MinPts = 3) \n\nplants &lt;- mutate(plants, cluster = factor(clustered$cluster), \n       .before = geometry) # assign to sf object"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#putting-it-all-together",
-    "href": "SDS_Day_2_slides.html#putting-it-all-together",
+    "objectID": "Day2.html#putting-it-all-together",
+    "href": "Day2.html#putting-it-all-together",
     "title": "Spatial Data Science II",
     "section": "Putting it all together",
     "text": "Putting it all together\n\n\nPredicting population genetic structure\nPlants within clusters are likely to be more related to each other\n\n\n\n\nNeighbors are more likely to be siblings\nGene banking of population should occur across cluster to maintain most diversity"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#works-cited",
-    "href": "SDS_Day_2_slides.html#works-cited",
+    "objectID": "Day2.html#works-cited",
+    "href": "Day2.html#works-cited",
     "title": "Spatial Data Science II",
     "section": "Works Cited",
     "text": "Works Cited\n\nClementini, Eliseo; Di Felice, Paolino; van Oosterom, Peter (1993). “A small set of formal topological relationships suitable for end-user interaction”. In Abel, David; Ooi, Beng Chin (eds.). Advances in Spatial Databases: Third International Symposium, SSD ’93 Singapore, June 23–25, 1993 Proceedings. Lecture Notes in Computer Science. 692/1993. Springer. pp. 277–295. doi:10.1007/3-540-56869-7_16. ISBN 978-3-540-56869-8. Accessed 1.16.2021\nEgenhofer, M.J.; Herring, J.R. (1990). “A Mathematical Framework for the Definition of Topological Relationships”\nEster, Martin; Kriegel, Hans-Peter; Sander, Jörg; Xu, Xiaowei (1996). Simoudis, Evangelos; Han, Jiawei; Fayyad, Usama M. (eds.). A density-based algorithm for discovering clusters in large spatial databases with noise. Proceedings of the Second International Conference on Knowledge Discovery and Data Mining (KDD-96). AAAI Press. pp. 226–231. CiteSeerX 10.1.1.121.9220. ISBN 1-57735-004-9.\ngstat Accessed 1.21.2021\nspdep Accessed 1.17.2021\nGreat Circle Distances Accessed 1.16.2021\nPoint Pattern Analysis in R Accessed 1.22.2022\nGGplot2 and sf Accessed 1.22.2022\nAn Introduction to Analysing Spatial Patterns Accessed 1.21.2022"
   },
   {
-    "objectID": "SDS_Day_2_slides.html#packages-cited",
-    "href": "SDS_Day_2_slides.html#packages-cited",
+    "objectID": "Day2.html#packages-cited",
+    "href": "Day2.html#packages-cited",
     "title": "Spatial Data Science II",
     "section": "Packages cited",
     "text": "Packages cited\n\n\n[[1]]\nHijmans R (2024). _raster: Geographic Data Analysis and Modeling_. R\npackage version 3.6-30, &lt;https://CRAN.R-project.org/package=raster&gt;.\n\n[[2]]\nPebesma E, Bivand R (2005). \"Classes and methods for spatial data in\nR.\" _R News_, *5*(2), 9-13. &lt;https://CRAN.R-project.org/doc/Rnews/&gt;.\n\nBivand R, Pebesma E, Gomez-Rubio V (2013). _Applied spatial data\nanalysis with R, Second edition_. Springer, NY.\n&lt;https://asdar-book.org/&gt;.\n\n[[3]]\nPebesma E, Bivand R (2023). _Spatial Data Science: With applications in\nR_. Chapman and Hall/CRC. doi:10.1201/9780429459016\n&lt;https://doi.org/10.1201/9780429459016&gt;, &lt;https://r-spatial.org/book/&gt;.\n\nPebesma E (2018). \"Simple Features for R: Standardized Support for\nSpatial Vector Data.\" _The R Journal_, *10*(1), 439-446.\ndoi:10.32614/RJ-2018-009 &lt;https://doi.org/10.32614/RJ-2018-009&gt;,\n&lt;https://doi.org/10.32614/RJ-2018-009&gt;.\n\n[[4]]\nWickham H, Averick M, Bryan J, Chang W, McGowan LD, François R,\nGrolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E,\nBache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi\nK, Vaughan D, Wilke C, Woo K, Yutani H (2019). \"Welcome to the\ntidyverse.\" _Journal of Open Source Software_, *4*(43), 1686.\ndoi:10.21105/joss.01686 &lt;https://doi.org/10.21105/joss.01686&gt;.\n\n[[5]]\nHijmans R (2024). _terra: Spatial Data Analysis_. R package version\n1.7-83, &lt;https://CRAN.R-project.org/package=terra&gt;.\n\n[[6]]\nBivand R, Nowosad J, Lovelace R (2024). _spData: Datasets for Spatial\nAnalysis_. R package version 2.3.3,\n&lt;https://CRAN.R-project.org/package=spData&gt;.\n\n[[7]]\nBivand R, Wong D (2018). \"Comparing implementations of global and local\nindicators of spatial association.\" _TEST_, *27*(3), 716-748.\ndoi:10.1007/s11749-018-0599-x\n&lt;https://doi.org/10.1007/s11749-018-0599-x&gt;.\n\nRoger Bivand (2022). \"R Packages for Analyzing Spatial Data: A\nComparative Case Study with Areal Data.\" _Geographical Analysis_,\n*54*(3), 488-518. doi:10.1111/gean.12319\n&lt;https://doi.org/10.1111/gean.12319&gt;.\n\nBivand R, Pebesma E, Gómez-Rubio V (2013). _Applied spatial data\nanalysis with R, Second edition_. Springer, NY.\n&lt;https://asdar-book.org/&gt;.\n\nPebesma E, Bivand R (2023). _Spatial Data Science With Applications in\nR_. Chapman & Hall. &lt;https://r-spatial.org/book/&gt;.\n\n[[8]]\nPebesma EJ (2004). \"Multivariable geostatistics in S: the gstat\npackage.\" _Computers & Geosciences_, *30*, 683-691.\n\nGräler B, Pebesma E, Heuvelink G (2016). \"Spatio-Temporal Interpolation\nusing gstat.\" _The R Journal_, *8*, 204-218.\n&lt;https://journal.r-project.org/archive/2016/RJ-2016-014/index.html&gt;.\n\n[[9]]\nBaddeley A, Rubak E, Turner R (2015). _Spatial Point Patterns:\nMethodology and Applications with R_. Chapman and Hall/CRC Press,\nLondon. ISBN 9781482210200,\n&lt;https://www.routledge.com/Spatial-Point-Patterns-Methodology-and-Applications-with-R/Baddeley-Rubak-Turner/p/book/9781482210200/&gt;.\n\nBaddeley A, Turner R, Mateu J, Bevan A (2013). \"Hybrids of Gibbs Point\nProcess Models and Their Implementation.\" _Journal of Statistical\nSoftware_, *55*(11), 1-43. doi:10.18637/jss.v055.i11\n&lt;https://doi.org/10.18637/jss.v055.i11&gt;.\n\nBaddeley A, Turner R (2005). \"spatstat: An R Package for Analyzing\nSpatial Point Patterns.\" _Journal of Statistical Software_, *12*(6),\n1-42. doi:10.18637/jss.v012.i06\n&lt;https://doi.org/10.18637/jss.v012.i06&gt;.\n\n[[10]]\nDouglas Nychka, Reinhard Furrer, John Paige, Stephan Sain (2021).\n\"fields: Tools for spatial data.\" R package version 16.3,\n&lt;https://github.com/dnychka/fieldsRPackage&gt;."

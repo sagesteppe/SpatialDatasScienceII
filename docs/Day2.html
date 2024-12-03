@@ -323,7 +323,7 @@ dim[I(a)∩B(b)] = 1
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Plot Topology-1.png" style="width:50.0%"></p>
+<p><img data-src="Day2_files/figure-revealjs/Plot Topology-1.png" style="width:50.0%"></p>
 <figcaption>Spatial Predicates after Egenhofer and Herring (1990)</figcaption>
 </figure>
 </div>
@@ -434,7 +434,7 @@ postGIS implementation
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Spatial Joins 2-1.png" class="quarto-figure quarto-figure-center" style="height:10.0%" width="960"></p>
+<p><img data-src="Day2_files/figure-revealjs/Spatial Joins 2-1.png" class="quarto-figure quarto-figure-center" style="height:10.0%" width="960"></p>
 </figure>
 </div>
 </div>
@@ -650,7 +650,7 @@ Split by removal of self-intersection at position X5, Y5.</p>
 </div>
 </div></div>
 
-<img data-src="SDS_Day_2_slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="Day2_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="summarize-geometries-with-group_by" class="slide level2">
 <h2><code>summarize</code> geometries with <code>group_by</code></h2>
 <p><code>dplyr</code> can be used to union geometries by group</p>
@@ -665,7 +665,7 @@ Split by removal of self-intersection at position X5, Y5.</p>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Summarize 3-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="Day2_files/figure-revealjs/Summarize 3-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -780,7 +780,7 @@ results
 <pre><code>integer(0)</code></pre>
 </div>
 </div>
-<img data-src="SDS_Day_2_slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="Day2_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="area-calculations-conversion" class="slide level2">
 <h2>Area Calculations conversion</h2>
 <p>Values by converted by looking up constants, or by using the <code>units</code> package.</p>
@@ -862,7 +862,7 @@ Largest
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Area 7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="Day2_files/figure-revealjs/Area 7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -887,7 +887,7 @@ Largest
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="Day2_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -921,7 +921,7 @@ Largest
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/boundary 3-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="Day2_files/figure-revealjs/boundary 3-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -938,7 +938,7 @@ Largest
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>chi_cent <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(chi_neighb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="SDS_Day_2_slides_files/figure-revealjs/Neighborhood Centroids-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section>
+<img data-src="Day2_files/figure-revealjs/Neighborhood Centroids-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section>
 <section id="point-on-surface" class="slide level2">
 <h2>Point on Surface</h2>
 <p>If the centroid would fall outside of a geometry, constrain it with <code>st_point_on_surface</code></p>
@@ -946,7 +946,7 @@ Largest
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>chi_pos <span class="ot">&lt;-</span> <span class="fu">st_point_on_surface</span>(chi_neighb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="SDS_Day_2_slides_files/figure-revealjs/Point on Surface Plot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
+<img data-src="Day2_files/figure-revealjs/Point on Surface Plot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
 <section>
 <section id="combine-union-features" class="title-slide slide level1 center">
 <h1>Combine &amp; Union Features</h1>
@@ -1006,7 +1006,7 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Combine Plots-1.png" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
+<p><img data-src="Day2_files/figure-revealjs/Combine Plots-1.png" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1063,7 +1063,7 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Union Plots-1.png" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
+<p><img data-src="Day2_files/figure-revealjs/Union Plots-1.png" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1079,7 +1079,7 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Cast 1-1.png" class="quarto-figure quarto-figure-center" style="height:25.0%" width="960"></p>
+<p><img data-src="Day2_files/figure-revealjs/Cast 1-1.png" class="quarto-figure quarto-figure-center" style="height:25.0%" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1092,7 +1092,7 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Cast 3-1.png" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
+<p><img data-src="Day2_files/figure-revealjs/Cast 3-1.png" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1109,28 +1109,28 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Logan Square</td>
-<td style="text-align: left;">MULTIPOLYGON (((-87.68732 4…</td>
+<td style="text-align: left;">Burnside</td>
+<td style="text-align: left;">MULTIPOLYGON (((-87.58737 4…</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Roseland</td>
-<td style="text-align: left;">MULTIPOLYGON (((-87.60449 4…</td>
+<td style="text-align: left;">Sheffield &amp; DePaul</td>
+<td style="text-align: left;">MULTIPOLYGON (((-87.65833 4…</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">North Lawndale</td>
-<td style="text-align: left;">MULTIPOLYGON (((-87.72024 4…</td>
+<td style="text-align: left;">North Center</td>
+<td style="text-align: left;">MULTIPOLYGON (((-87.67336 4…</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">West Loop</td>
-<td style="text-align: left;">MULTIPOLYGON (((-87.64447 4…</td>
+<td style="text-align: left;">Sauganash,Forest Glen</td>
+<td style="text-align: left;">MULTIPOLYGON (((-87.76919 4…</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Morgan Park</td>
-<td style="text-align: left;">MULTIPOLYGON (((-87.64215 4…</td>
+<td style="text-align: left;">South Shore</td>
+<td style="text-align: left;">MULTIPOLYGON (((-87.5921 41…</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Washington Heights</td>
-<td style="text-align: left;">MULTIPOLYGON (((-87.63373 4…</td>
+<td style="text-align: left;">Grand Boulevard</td>
+<td style="text-align: left;">MULTIPOLYGON (((-87.60671 4…</td>
 </tr>
 </tbody>
 </table>
@@ -1145,7 +1145,7 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">MULTIPOLYGON (((-87.58582 4…</td>
+<td style="text-align: left;">MULTIPOLYGON (((-87.68485 4…</td>
 </tr>
 </tbody>
 </table>
@@ -1160,22 +1160,22 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">POLYGON ((-87.58582 41.7515…</td>
+<td style="text-align: left;">POLYGON ((-87.68485 42.0194…</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">POLYGON ((-87.6952 41.96127…</td>
+<td style="text-align: left;">POLYGON ((-87.59219 41.7728…</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">POLYGON ((-87.62855 41.7942…</td>
+<td style="text-align: left;">POLYGON ((-87.6678 41.9143,…</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">POLYGON ((-87.64435 41.8599…</td>
+<td style="text-align: left;">POLYGON ((-87.76919 42.0048…</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">POLYGON ((-87.94001 41.9981…</td>
+<td style="text-align: left;">POLYGON ((-87.69668 41.7071…</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">POLYGON ((-87.9335 42.00553…</td>
+<td style="text-align: left;">POLYGON ((-87.83658 41.9864…</td>
 </tr>
 </tbody>
 </table>
@@ -1192,7 +1192,7 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 <span id="cb62-3"><a></a>chi_buffer_3k <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(chi_union, <span class="at">dist =</span> <span class="dv">3000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="SDS_Day_2_slides_files/figure-revealjs/Buffer 2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section>
+<img data-src="Day2_files/figure-revealjs/Buffer 2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section>
 <section id="convex-hulls" class="slide level2">
 <h2>Convex Hulls</h2>
 <ul>
@@ -1203,7 +1203,7 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 <span id="cb63-2"><a></a>chi_ch_cit <span class="ot">&lt;-</span> <span class="fu">st_convex_hull</span>(chi_union)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="SDS_Day_2_slides_files/figure-revealjs/Buffer and Convex Hull 3-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section></section>
+<img data-src="Day2_files/figure-revealjs/Buffer and Convex Hull 3-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section></section>
 <section>
 <section id="measuring-distances" class="title-slide slide level1 center">
 <h1>Measuring Distances</h1>
@@ -1267,7 +1267,7 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Create Plot of Great Circle Distances-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+<p><img data-src="Day2_files/figure-revealjs/Create Plot of Great Circle Distances-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
@@ -1326,7 +1326,7 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Distance plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="Day2_files/figure-revealjs/Distance plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1362,7 +1362,7 @@ Geodetic CRS:  WGS84(DD)</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Plot voronoi polygons-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="Day2_files/figure-revealjs/Plot voronoi polygons-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1406,7 +1406,7 @@ Link number distribution:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Distance Based Neighbors 3-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="Day2_files/figure-revealjs/Distance Based Neighbors 3-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1420,7 +1420,7 @@ Link number distribution:
 <li>more widely used for building models than simply estimating densities via projections</li>
 </ul>
 
-<img data-src="SDS_Day_2_slides_files/figure-revealjs/Kernel Density of a Point Pattern Process-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="Day2_files/figure-revealjs/Kernel Density of a Point Pattern Process-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="determine-whether-points-have-a-non-random-distribution" class="slide level2">
 <h2>Determine whether points have a non-random distribution</h2>
 <div class="cell" data-layout-align="center">
@@ -1440,7 +1440,7 @@ Link number distribution:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="SDS_Day_2_slides_files/figure-revealjs/Plot Ripleys K-1.png" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
+<p><img data-src="Day2_files/figure-revealjs/Plot Ripleys K-1.png" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1473,7 +1473,7 @@ Link number distribution:
 <span id="cb72-4"><a></a>       <span class="at">.before =</span> geometry) <span class="co"># assign to sf object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="SDS_Day_2_slides_files/figure-revealjs/Cluster Points in Space - DBSCAN-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="Day2_files/figure-revealjs/Cluster Points in Space - DBSCAN-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="putting-it-all-together" class="slide level2">
 <h2>Putting it all together</h2>
 <div style="float: left; width: 45%;">
@@ -1490,7 +1490,7 @@ Link number distribution:
 </ul>
 </div>
 
-<img data-src="SDS_Day_2_slides_files/figure-revealjs/Visualize Clusters and Distance based Neighbors-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
+<img data-src="Day2_files/figure-revealjs/Visualize Clusters and Distance based Neighbors-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
 <section>
 <section id="wrapping-up-the-spatial-data-science-module" class="title-slide slide level1 center">
 <h1>Wrapping up the Spatial Data Science Module:</h1>
